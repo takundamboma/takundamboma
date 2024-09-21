@@ -1,0 +1,64 @@
+.width-100 {
+        width: 100%; /* Makes elements take up the full width */
+    }
+    
+    .top-header {
+        background: #2196f3;
+        padding: 5px 0;
+        border-bottom: 1px solid #3131315e;
+        width: 100vw;
+        margin: 0;
+    }
+    
+    .container {
+        max-width: 1200px; /* Defines max width of content */
+        margin: 0 auto; /* Centers the container */
+        padding: 0 20px; /* Adds some padding on the sides */
+    }
+    
+    .news-list {
+        color: white; /* Just an example, you can style it how you like */
+    }
+    
+    .headqoute {
+        color: white; /* Style the marquee text */
+    }
+    .logo img {
+        max-height: 100px; /* Sets the maximum height to 50px */
+        width: auto; /* Adjusts the width automatically based on the height */
+    }
+    
+    .header-menu{
+position: relative;
+box-shadow: 0px 2px 5px 0px #00000036;
+    }
+    .logo{
+        width: fit-content;
+        float: left;
+    }
+    .main-menu{
+        list-style: none;
+        float: right;
+        margin-top: 20px;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+    .main-menu a{
+        font-weight: 500;
+        color: #3a3a3a;
+        font-size: 15px;
+        text-decoration: none;
+        
+    }
+    .main-menu li{
+        float: left;
+        padding: 12px 15px;
+        margin: 0 10px;
+    }
+    .slider-width {
+        width: 100%; /* Makes the image take full width */
+        height: auto;
+        object-fit: cover;
+    }
+    

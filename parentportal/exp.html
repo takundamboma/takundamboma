@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <html lang="eng">
+<style>{
+    .width-100 {
+        width: 100%;
+        position: relative; /* Makes the container a positioned parent for absolute positioning */
+    }
+    
+    .top-header {
+        background: #2196f3;
+        padding: 5px 0;
+        border-bottom: 1px solid #3131315e;
+        width: 100vw;
+        margin: 0;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+    }
+    
+    .news-list {
+        position: absolute; /* Positions NEWS text on top of the marquee */
+        left: 0; /* Aligns it to the left */
+        top: 50%; /* Centers vertically */
+        transform: translateY(-50%); /* Adjusts the vertical alignment */
+        z-index: 1; /* Ensures it stays on top of the marquee */
+        background-color: #2196f3; /* Matches the header background to hide the marquee behind */
+        color: white;
+        padding-right: 15px; /* Adds spacing to the right */
+    }
+    
+    .headqoute {
+        color: white;
+        z-index: 0; /* Ensures the marquee text stays behind the NEWS text */
+    }
+    
+}
+</style>
+<body>
+    <div class="width-100 top-header">
+        <div class="container">
+            <div class="width-100">
+                <b class="news-list"> NEWS :</b>
+                <marquee class="headqoute"> My College: Intelligence plus curiosity that is the root of true education</marquee>
+            </div>
+        </div>
+    </div>
+</body>
+</head>
