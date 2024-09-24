@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Management System</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
+            --error-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .tabs {
+            display: flex;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #2980b9;
+        }
+
+        .tab.active {
+            background-color: var(--secondary-color);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, select {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: var(--secondary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        #resultDisplay {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: var(--error-color);
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('teacher')">Teacher</div>
+            <div class="tab" onclick="showTab('student')">Student</div>
+        </div>
+        <div class="content">
+            <div id="teacherContent">
+                <h2>Post Result</h2>
+                <form id="teacherForm">
+                    <input type="text" id="studentName" placeholder="Student Name" required>
+                    <input type="password" id="studentPassword" placeholder="Student Password" required>
+                    <input type="number" id="mathScore" placeholder="Math Score" required>
+                    <input type="number" id="scienceScore" placeholder="Science Score" required>
+                    <input type="number" id="englishScore" placeholder="English Score" required>
+                    <button type="submit">Post Result</button>
+                </form>
+            </div>
+            <div id="studentContent" style="display: none;">
+                <h2>View Result</h2>
+                <form id="studentForm">
+                    <input type="text" id="viewStudentName" placeholder="Your Name" required>
+                    <input type="password" id="viewStudentPassword" placeholder="Your Password" required>
+                    <button type="submit">View Result</button>
+                </form>
+                <div id="resultDisplay"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let results = [];
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`.tab:nth-child(${tabName === 'teacher' ? 1 : 2})`).classList.add('active');
+            document.getElementById('teacherContent').style.display = tabName === 'teacher' ? 'block' : 'none';
+            document.getElementById('studentContent').style.display = tabName === 'student' ? 'block' : 'none';
+        }
+
+        document.getElementById('teacherForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('studentName').value;
+            const password = document.getElementById('studentPassword').value;
+            const mathScore = parseInt(document.getElementById('mathScore').value);
+            const scienceScore = parseInt(document.getElementById('scienceScore').value);
+            const englishScore = parseInt(document.getElementById('englishScore').value);
+
+            results.push({ name, password, mathScore, scienceScore, englishScore });
+            alert('Result posted successfully!');
+            this.reset();
+        });
+
+        document.getElementById('studentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('viewStudentName').value;
+            const password = document.getElementById('viewStudentPassword').value;
+            const result = results.find(r => r.name === name && r.password === password);
+
+            const resultDisplay = document.getElementById('resultDisplay');
+            if (result) {
+                const totalScore = result.mathScore + result.scienceScore + result.englishScore;
+                const averageScore = (totalScore / 3).toFixed(2);
+                resultDisplay.innerHTML = `
+                    <h3>Result for ${result.name}</h3>
+                    <p>Math: ${result.mathScore}</p>
+                    <p>Science: ${result.scienceScore}</p>
+                    <p>English: ${result.englishScore}</p>
+                    <p>Total Score: ${totalScore}</p>
+                    <p>Average Score: ${averageScore}</p>
+                `;
+            } else {
+                resultDisplay.innerHTML = '<p class="error">No result found or incorrect password.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
