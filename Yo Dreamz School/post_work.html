@@ -1,0 +1,27 @@
+<!-- post_work.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Schoolwork</title>
+</head>
+<body>
+
+<h1>Post Schoolwork</h1>
+
+<form action="submit_work.php" method="POST" enctype="multipart/form-data">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+    
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" required></textarea><br><br>
+    
+    <label for="document">Upload Document:</label><br>
+    <input type="file" id="document" name="document" accept=".pdf,.doc,.docx,.ppt,.pptx" required><br><br>
+    
+    <input type="submit" value="Post Work">
+</form>
+
+</body>
+</html>

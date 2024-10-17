@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Student Results</title>
+</head>
+<body>
+
+<h1>Post Student Results</h1>
+
+<form action="submit_results.php" method="POST">
+    <label for="student_name">Student Name:</label><br>
+    <input type="text" id="student_name" name="student_name" required><br><br>
+
+    <h2>Results</h2>
+    
+    <label for="maths_score">Maths Score:</label><br>
+    <input type="number" id="maths_score" name="maths_score" min="0" max="100" required><br><br>
+    
+    <label for="maths_comments">Maths Comments:</label><br>
+    <textarea id="maths_comments" name="maths_comments"></textarea><br><br>
+
+    <label for="english_score">English Score:</label><br>
+    <input type="number" id="english_score" name="english_score" min="0" max="100" required><br><br>
+
+    <label for="english_comments">English Comments:</label><br>
+    <textarea id="english_comments" name="english_comments"></textarea><br><br>
+
+    <label for="shona_score">Shona Score:</label><br>
+    <input type="number" id="shona_score" name="shona_score" min="0" max="100" required><br><br>
+
+    <label for="shona_comments">Shona Comments:</label><br>
+    <textarea id="shona_comments" name="shona_comments"></textarea><br><br>
+
+    <label for="general_score">General Paper Score:</label><br>
+    <input type="number" id="general_score" name="general_score" min="0" max="100" required><br><br>
+
+    <label for="general_comments">General Paper Comments:</label><br>
+    <textarea id="general_comments" name="general_comments"></textarea><br><br>
+
+    <input type="submit" value="Post Results">
+</form>
+
+</body>
+</html>
